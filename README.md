@@ -1,5 +1,11 @@
 # My CSS Style Guide {
 
+## 字符集
+
+```
+@charset "utf-8";
+```
+
 ## 缩进
 
 * 使用两个空格来缩进代码
@@ -95,43 +101,57 @@ input[type="radio"] {
 需要使用引号的地方使用双引号：
 
 ``` css
-content: "\00a0";
+.selector {
+  content: "\00a0";
+}
 ```
 
 逗号 `,` 后面插入一个空格：
 
 ``` css
-color: rgba(0, 0, 0, .5);
+.selector {
+  color: rgba(0, 0, 0, .5);
+}
 ```
 
 省略属性值为 0 的单位：
 
 ``` css
-margin: 0;
+.selector {
+  margin: 0;
+}
 ```
 
 如果是时间值为 0 则不要省略单位：
 
 ``` css
-transition: all 0s;
+.selector {
+  transition: all 0s;
+}
 ```
 
 省略绝对值小于 1 的数值小数点前面的 0：
 
 ``` css
-margin: .5em;
+.selector {
+  margin: .5em;
+}
 ```
 
 16 进制颜色值使用小写字母，能简写的时候使用简写形式：
 
 ```
-color: #fff;
+.selector {
+  color: #fff;
+}
 ```
 
 边框的值按照 -width, -style, -color 的顺序书写：
 
 ``` css
-border: 1px solid #ccc;
+.selector {
+  border: 1px solid #ccc;
+}
 ```
 
 # }
