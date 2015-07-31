@@ -86,19 +86,6 @@ input[type="radio"] {
 }
 ```
 
-## 属性
-
-带浏览器前缀的属性按照 `-webkit-`, `-moz-`, `-ms-`, `-o-` 的顺序垂直对齐：
-
-``` css
-.selector {
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-}
-```
-
 ## 属性值
 
 * 当需要使用引号的时候一律使用双引号
@@ -179,16 +166,41 @@ input[type="radio"] {
 URL 值省略引号
 
 ``` css
-background-image: url(i/bg.gif);
+.selector {
+  background-image: url(i/bg.gif);
+}
 ```
 
-### 其它
+### 其它值
 
 边框的值按照 -width, -style, -color 的顺序书写：
 
 ``` css
 .selector {
   border: 1px solid #ccc;
+}
+```
+
+## 浏览器前缀
+
+* 带有浏览器前缀按照 `-webkit-`, `-moz-`, `-ms-`, `-o-` 的顺序书写
+* 带有浏览器前缀的属性使用空格在垂直方向上对齐
+
+``` css
+@-webkit-keyframes animation-name {
+}
+
+@-o-keyframes animation-name {
+}
+
+@keyframes animation-name {
+}
+
+.selector {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 ```
 
