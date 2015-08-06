@@ -37,8 +37,9 @@
 ## 选择器
 
 * 使用群组选择器的时候每个选择器单独成行
-* 使用小写字母以及连字符，不使用大写字母、下划线等
-* 选择器中不要出现 `div` 和 `span` 等元素
+* 逗号写在每一行末尾
+* 选择器使用小写字母以及连字符分隔单词，不使用大写字母、下划线等
+* 选择器中尽量不要出现 `div` 和 `span` 等元素
 
 ``` css
 .selector-1,
@@ -86,10 +87,25 @@ input[type="radio"] {
 }
 ```
 
+合并申明：
+
+``` css
+.selector {
+  margin-top: 10px;
+  margin-right: 20px;
+  margin-bottom: 30px;
+  margin-left: 40px;
+}
+
+.selector {
+  margin: 10px 20px 30px 40px;
+}
+```
+
 ## 属性值
 
 * 当需要使用引号的时候一律使用双引号
-* 当属性值内存在空格时也使用引号括起来
+* 当属性值内有空格的时候必须使用引号
 
 ``` css
 .selector {
@@ -103,6 +119,67 @@ input[type="radio"] {
 ``` css
 .selector {
   color: rgba(0, 0, 0, .5);
+}
+```
+
+属性值可以省略的时候尽量省略：
+
+``` css
+.selector {
+  margin: 10px 20px 10px 20px;
+}
+
+.selector {
+  margin: 10px 20px;
+}
+```
+
+### 颜色值
+
+* 统一使用十六进制颜色值
+* 使用小写字母
+* 当能缩写的时候使用缩写形式
+
+``` css
+.selector {
+  color: #fff;
+}
+```
+
+当颜色值需要不透明度的时候使用 `rgba` 函数，并且指定一个十六进制的颜色值做为后备
+
+``` css
+.selector {
+  color: #f00;
+  color: rgba(255, 0, 0, .5);
+}
+```
+
+### URL
+
+URL 值省略引号，当有空格时除外
+
+``` css
+.selector {
+  background-image: url(i/bg.gif);
+}
+```
+
+### 属性值的顺序
+
+边框的值按照 -width, -style, -color 的顺序书写：
+
+``` css
+.selector {
+  border: 1px solid #ccc;
+}
+```
+
+过渡值按照 -property, -duration, -timing-function, -delay 的顺序书写
+
+``` css
+.selector {
+  transition: all .2s ease-in-out .5s;
 }
 ```
 
@@ -137,47 +214,6 @@ input[type="radio"] {
 ``` css
 .selector {
   margin: .5em;
-}
-```
-
-### 颜色值
-
-* 统一使用十六进制颜色值
-* 使用小写字母
-* 当能缩写的时候使用缩写形式：
-
-``` css
-.selector {
-  color: #fff;
-}
-```
-
-当颜色值需要不透明度的时候使用 `rgba` 函数，并且指定一个十六进制的颜色值做为后备
-
-``` css
-.selector {
-  color: #f00;
-  color: rgba(255, 0, 0, .5);
-}
-```
-
-### URL
-
-URL 值省略引号
-
-``` css
-.selector {
-  background-image: url(i/bg.gif);
-}
-```
-
-### 其它值
-
-边框的值按照 -width, -style, -color 的顺序书写：
-
-``` css
-.selector {
-  border: 1px solid #ccc;
 }
 ```
 
