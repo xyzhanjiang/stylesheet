@@ -4,9 +4,10 @@
 
 让多人协作的代码看上去像一个人写的一样
 
-## 缩进
+## Indentation
 
-使用两个空格
+* Use 2 spaces
+* Never mix spaces and tabs for indentation
 
 ``` css
 .selector {
@@ -14,11 +15,11 @@
 }
 ```
 
-## 规则
+## Rule
 
-* 每条规则之间插入一个空行
-* 左花括号 `{` 之前插入一个空格
-* 右花括号 `}` 单独成行
+* Put a blank line between rules
+* Put a space before the opening brace `{` in rules
+* Put closing braces } of rules on a new line
 
 ``` css
 .selector-1 {
@@ -30,23 +31,25 @@
 }
 ```
 
-### @规则
+### @ rule
 
-字符集使用 utf-8
+Use utf-8
 
 ``` css
 @charset "utf-8";
 ```
 
-## 选择器
+## Selectors
 
-* 使用群组选择器的时候每个选择器单独成行
+* When using multiple selectors in a rule declaration, give each selector its own line
 * 逗号写在每一行末尾
-* 选择器中尽量不要出现 `div` 和 `span` 等元素
+* 选择器中尽量不要出现 `div` 和 `span` 等元素 / Do not use `div` & `span` element selector
+* 不要使用 ID 选择器 / Do not use ID selector
 
 ``` css
 .selector-1,
 .selector-2 {
+  /* ^_^ */
 }
 ```
 
@@ -54,6 +57,7 @@
 
 ``` css
 ul > li {
+  /* ^_^ */
 }
 ```
 
@@ -65,22 +69,24 @@ a:visited,
 a:focus,
 a:hover,
 a:active {
+  /* ^_^ */
 }
 ```
 
-属性选择器应该将选择器中的属性值用双引号括起来：
+Quote attribute values in selectors.
 
 ``` css
 input[type="radio"] {
+  /* ^_^ */
 }
 ```
 
-## 声明
+## Declaration
 
-* 每条声明语句单独成行
-* 冒号 `:` 后插入一个空格
-* 声明按首字母顺序排列
-* 最后一条声明的结束分号 `;` (右花括号之前)不要省略
+* Give each declaration its own line.
+* Put a space after the `:` character.
+* Make sure the declarations are in alphabetical order by the property.
+* Do not omit the semi-colon at the end of the last declaration in a declaration block.
 
 ``` css
 .selector {
@@ -105,10 +111,9 @@ input[type="radio"] {
 }
 ```
 
-## 属性值
+## Value
 
-* 当需要使用引号的时候一律使用双引号
-* 当属性值内有空格的时候必须使用引号
+* Use double quotes.
 
 ``` css
 .selector {
@@ -117,7 +122,7 @@ input[type="radio"] {
 }
 ```
 
-每个逗号 `,` 后面插入一个空格：
+Put a space after the `,` character
 
 ``` css
 .selector {
@@ -137,11 +142,9 @@ input[type="radio"] {
 }
 ```
 
-### 颜色值
+### Colors
 
-* 统一使用十六进制颜色值
-* 使用小写字母
-* 当能缩写的时候使用缩写形式
+Use lowercase and shorthand hex color values.
 
 ``` css
 .selector {
@@ -149,7 +152,7 @@ input[type="radio"] {
 }
 ```
 
-当颜色值需要不透明度的时候使用 `rgba` 函数，并且应该指定一个十六进制的颜色值做为后备
+Use `rgba()` if need.
 
 ``` css
 .selector {
@@ -160,7 +163,7 @@ input[type="radio"] {
 
 ### URL
 
-URL 值省略引号，当有空格时除外
+URL 值省略引号，当有空格时除外，所以为了一致性，不要在文件夹或文件名中使用空格
 
 ``` css
 .selector {
@@ -188,7 +191,7 @@ URL 值省略引号，当有空格时除外
 
 ### 单位
 
-省略属性值为 0 的单位：
+Where allowed, avoid specifying units for zero-values.
 
 ``` css
 .selector {
@@ -220,7 +223,7 @@ URL 值省略引号，当有空格时除外
 }
 ```
 
-## 浏览器前缀
+## Prefix
 
 * 带有浏览器前缀按照 `-webkit-`, `-moz-`, `-ms-`, `-o-` 的顺序书写
 * 带有浏览器前缀的属性或者属性值使用空格在垂直方向上对齐，标准属性写在最后
@@ -243,7 +246,7 @@ URL 值省略引号，当有空格时除外
 }
 ```
 
-## 注释
+## Comments
 
 * 注释和代码之间插入一个空格
 * 注释内容两端都插入一个空格
@@ -256,12 +259,13 @@ URL 值省略引号，当有空格时除外
 
 ## 命名
 
-* 使用小写字母
+* Use lowercase.
 * 使用连字符分隔单词
 * 使用有意义的单词
 
 ``` css
 .class-name {
+  /* ^_^ */
 }
 ```
 
