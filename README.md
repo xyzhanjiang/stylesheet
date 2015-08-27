@@ -41,10 +41,10 @@ Use utf-8
 
 ## Selectors
 
-* When using multiple selectors in a rule declaration, give each selector its own line
-* 逗号写在每一行末尾
-* 选择器中尽量不要出现 `div` 和 `span` 等元素 / Do not use `div` & `span` element selector
-* 不要使用 ID 选择器 / Do not use ID selector
+* When using multiple selectors in a rule declaration, give each selector its own line.
+* Put the `,` character at the end of line.
+* Do not use `div` and `span` elements in selectors.
+* Do not use ID selector.
 
 ``` css
 .selector-1,
