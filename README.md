@@ -189,7 +189,7 @@ URL 值省略引号，当有空格时除外，所以为了一致性，不要在�
 }
 ```
 
-### 单位
+### Units
 
 Where allowed, avoid specifying units for zero-values.
 
@@ -215,7 +215,7 @@ Where allowed, avoid specifying units for zero-values.
 }
 ```
 
-省略绝对值小于 1 的数值小数点前面的 0：
+Don't prefix property values or color parameters with a leading zero.
 
 ``` css
 .selector {
@@ -257,16 +257,23 @@ Where allowed, avoid specifying units for zero-values.
 }
 ```
 
-## 命名
+## Name
 
-* Use lowercase.
-* 使用连字符分隔单词
-* 使用有意义的单词
+* Use lowercase and dashes.
+* Use meaningful names.
 
 ``` css
 .class-name {
   /* ^_^ */
 }
+```
+
+### JavaScript hooks
+
+Use `js-*` classes to denote behavior (as opposed to style), but keep these classes out of your CSS.
+
+``` html
+<div class="js-box"></div>
 ```
 
 # }
