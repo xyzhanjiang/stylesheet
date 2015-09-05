@@ -15,11 +15,11 @@
 }
 ```
 
-## Rule
+## Rule declarations
 
-* Put a blank line between rules
-* Put a space before the opening brace `{` in rules
-* Put closing braces } of rules on a new line
+* Put a blank line between rule declarations.
+* Put a space before the opening brace `{` in rule declarations.
+* Put closing braces } of rule declarations on a new line.
 
 ``` css
 .selector-1 {
@@ -31,9 +31,9 @@
 }
 ```
 
-### @ rule
+### @ rule declarations
 
-Use utf-8
+Use utf-8.
 
 ``` css
 @charset "utf-8";
@@ -130,7 +130,7 @@ Put a space after the `,` character
 }
 ```
 
-属性值可以省略的时候尽量省略：
+Use shorthand.
 
 ``` css
 .selector {
@@ -163,7 +163,7 @@ Use `rgba()` if need.
 
 ### URL
 
-URL 值省略引号，当有空格时除外，所以为了一致性，不要在文件夹或文件名中使用空格
+URL 值省略引号，当有空格时除外，所以为了一致性，不要在文件夹或文件名中使用空格.
 
 ``` css
 .selector {
