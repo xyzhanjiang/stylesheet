@@ -1,13 +1,12 @@
 # My CSS Style Guide {
 
-## 唯一指导标准
+## 唯一指导准则
 
-让多人协作的代码看上去像一个人写的一样
+自律
 
-## Indentation
+## 缩进
 
-* Use 2 spaces
-* Never mix spaces and tabs for indentation
+使用2个空格来作为缩进层级，千万不要混合使用空格和制表符。
 
 ``` css
 .selector {
@@ -15,11 +14,11 @@
 }
 ```
 
-## Rule declarations
+## Rules 规则集
 
-* Put a blank line between rule declarations.
-* Put a space before the opening brace `{` in rule declarations.
-* Put closing braces } of rule declarations on a new line.
+1. 使用空行分隔规则集。
+2. 左大括弧 `{` 前面插入一个空格。
+3. 右大括弧 `}` 单独一行。
 
 ``` css
 .selector-1 {
@@ -31,20 +30,19 @@
 }
 ```
 
-### @ rule declarations
+### @ 规则
 
-Use utf-8.
+使用 utf-8 字符集。
 
 ``` css
 @charset "utf-8";
 ```
 
-## Selectors
+## Selectors 选择器
 
-* When using multiple selectors in a rule declaration, give each selector its own line.
-* Put the `,` character at the end of line.
-* Do not use `div` and `span` elements in selectors.
-* Do not use ID selector.
+1. 每个选择器独立一行，逗号 `,` 放在每行末尾。
+2. 不在选择器中使用 `div` 和 `span` 元素。
+3. 不使用 ID 选择器。
 
 ``` css
 .selector-1,
@@ -52,6 +50,8 @@ Use utf-8.
   /* ^_^ */
 }
 ```
+
+### Combinators 关系选择器
 
 关系选择器的符号两边都插入一个空格：
 
@@ -61,19 +61,9 @@ ul > li {
 }
 ```
 
-超链接状态伪类选择器的顺序为：
+### 属性选择器
 
-``` css
-a:link,
-a:visited,
-a:focus,
-a:hover,
-a:active {
-  /* ^_^ */
-}
-```
-
-Quote attribute values in selectors.
+属性选择器中的属性值使用双引号引用起来，虽然这不是必须的。
 
 ``` css
 input[type="radio"] {
@@ -81,12 +71,12 @@ input[type="radio"] {
 }
 ```
 
-## Declaration
+## Declaration 声明
 
-* Give each declaration its own line.
-* Put a space after the `:` character.
-* Make sure the declarations are in alphabetical order by the property.
-* Do not omit the semi-colon at the end of the last declaration in a declaration block.
+1. 每条声明单独一行。
+2. 冒号 `:` 后面插入一个空格。
+3. 声明按属性名的首写字母顺序排列。
+4. 不要省略最后一个声明的结束分号。
 
 ``` css
 .selector {
@@ -96,7 +86,7 @@ input[type="radio"] {
 }
 ```
 
-合并申明，简化代码：
+尽量合并声明，简化代码：
 
 ``` css
 .selector {
@@ -111,9 +101,9 @@ input[type="radio"] {
 }
 ```
 
-## Value
+## Value 属性值
 
-* Use double quotes.
+* 需要使用引号的时候一律使用双引号。
 
 ``` css
 .selector {
@@ -122,7 +112,7 @@ input[type="radio"] {
 }
 ```
 
-Put a space after the `,` character
+逗号 `,` 后面插入一个空格。
 
 ``` css
 .selector {
@@ -130,7 +120,7 @@ Put a space after the `,` character
 }
 ```
 
-Use shorthand.
+使用简写形式的属性值。
 
 ``` css
 .selector {
@@ -142,9 +132,9 @@ Use shorthand.
 }
 ```
 
-### Colors
+### Colors 颜色值
 
-Use lowercase and shorthand hex color values.
+使用 16 进制的小写颜色值。
 
 ``` css
 .selector {
@@ -152,7 +142,7 @@ Use lowercase and shorthand hex color values.
 }
 ```
 
-Use `rgba()` if need.
+使用 `rgba()` 函数。
 
 ``` css
 .selector {
@@ -163,7 +153,7 @@ Use `rgba()` if need.
 
 ### URL
 
-URL 值省略引号，当有空格时除外，所以为了一致性，不要在文件夹或文件名中使用空格.
+URL 值省略引号，但是当值内有空格时除外，所以为了一致性，不要在文件夹或文件名中使用空格。
 
 ``` css
 .selector {
@@ -171,9 +161,9 @@ URL 值省略引号，当有空格时除外，所以为了一致性，不要在�
 }
 ```
 
-### 部分属性值的书写顺序
+### 部分属性值按照固定的顺序书写
 
-边框的值按照 -width, -style, -color 的顺序书写：
+border 的值按照 -width, -style, -color 的顺序书写：
 
 ``` css
 .selector {
@@ -181,7 +171,7 @@ URL 值省略引号，当有空格时除外，所以为了一致性，不要在�
 }
 ```
 
-过渡值按照 -property, -duration, -timing-function, -delay 的顺序书写
+transition 的值按照 -property, -duration, -timing-function, -delay 的顺序书写
 
 ``` css
 .selector {
@@ -189,9 +179,9 @@ URL 值省略引号，当有空格时除外，所以为了一致性，不要在�
 }
 ```
 
-### Units
+### Units 单位
 
-Where allowed, avoid specifying units for zero-values.
+在允许的情况下省略值为 0 的单位。
 
 ``` css
 .selector {
@@ -199,7 +189,7 @@ Where allowed, avoid specifying units for zero-values.
 }
 ```
 
-如果是时间值为 0 则不要省略单位：
+如果是时间值为 0 则不要省略单位。
 
 ``` css
 .selector {
@@ -207,7 +197,7 @@ Where allowed, avoid specifying units for zero-values.
 }
 ```
 
-当使用百分比颜色函数时，值为 0 的时候不要省略百分号：
+当使用百分比颜色函数时，值为 0 的时候不要省略百分号。
 
 ``` css
 .selector {
@@ -215,7 +205,7 @@ Where allowed, avoid specifying units for zero-values.
 }
 ```
 
-Don't prefix property values or color parameters with a leading zero.
+当属性值的数字部分绝对值小于 1 时省略前置的数字 0。
 
 ``` css
 .selector {
@@ -223,7 +213,7 @@ Don't prefix property values or color parameters with a leading zero.
 }
 ```
 
-## Prefix
+## Prefix 前缀
 
 * 带有浏览器前缀按照 `-webkit-`, `-moz-`, `-ms-`, `-o-` 的顺序书写
 * 带有浏览器前缀的属性或者属性值使用空格在垂直方向上对齐，标准属性写在最后
@@ -246,10 +236,10 @@ Don't prefix property values or color parameters with a leading zero.
 }
 ```
 
-## Comments
+## Comments 注释
 
-* 注释和代码之间插入一个空格
-* 注释内容两端都插入一个空格
+1. 注释和代码之间插入一个空格
+2. 注释内容两端都插入一个空格
 
 ``` css
 .selector {
@@ -257,16 +247,18 @@ Don't prefix property values or color parameters with a leading zero.
 }
 ```
 
-## Name
+## Name 命名
 
-* Use lowercase and dashes.
-* Use meaningful names.
+1. 使用小写字母和连字符。
+2. 使用有意义的单词。
 
 ``` css
 .class-name {
   /* ^_^ */
 }
 ```
+
+使用有意义的单词、小写字符、连字符来命名。
 
 ### JavaScript hooks
 
