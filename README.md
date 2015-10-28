@@ -210,11 +210,65 @@ Use `js-*` classes to denote behavior (as opposed to style), but keep these clas
 
 使用一致的 Hacks 方式。
 
-```
+``` css
 .selector {
   _color: #666;  /* IE 6 */
   *color: #999;  /* IE 6, 7 */
   color: #333\9; /* IE 6, 7, 8, 9, 10 */
+}
+```
+
+## Snippet
+
+使用一致的方式来解决各种问题，让代码一目了然。
+
+### 水平居中
+
+固定宽度块级元素水平居中。
+
+``` css
+.center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 800px;
+}
+```
+
+### Clearfix 清除浮动
+
+``` css
+.clearfix {
+  *zoom: 1;
+}
+
+.clearfix:before,
+.clearfix:after {
+  content: " ";
+  display: table;
+}
+
+.clearfix:after {
+  clear: both;
+}
+```
+
+### 单行文本溢出省略
+
+``` css
+.selector {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+```
+
+### 不透明度
+
+``` css
+.selector {
+  filter: alpha(opacity=30);
+  opacity: .3;
 }
 ```
 
