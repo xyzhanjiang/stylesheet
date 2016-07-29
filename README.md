@@ -10,8 +10,8 @@ For my work
 * [Declaration](#declaration)
 * [Value](#value)
 * [Units](#units)
-* [Prefix](#prefix)
-* [Name](#name)
+* [Vendor Prefixes](#vendor-prefixes)
+* [ClassName](#classname)
 * [Hacks](#hacks)
 * [Tips](#tips)
 
@@ -123,39 +123,11 @@ Don't prefix property values or color parameters with a leading zero
 }
 ```
 
-## Prefix
+## Vendor Prefixes
 
-`-webkit-`, `-moz-`, `-ms-`, `-o-`
+Use [Autoprefixer](https://twitter.com/autoprefixer) to add vendor prefixes to rules
 
-``` css
-@-webkit-keyframes animation-name {
-  from {
-    -webkit-transform: scale(1);
-            transform: scale(1);
-  }
-
-  to {
-    -webkit-transform: scale(1.1);
-            transform: scale(1.1);
-  }
-}
-
-@keyframes animation-name {
-  from {
-    -webkit-transform: scale(1);
-        -ms-transform: scale(1);
-            transform: scale(1);
-  }
-
-  to {
-    -webkit-transform: scale(1.1);
-        -ms-transform: scale(1.1);
-            transform: scale(1.1);
-  }
-}
-```
-
-## Name
+## ClassName
 
 1. Use lowercase and dashes
 2. Use meaningful names
