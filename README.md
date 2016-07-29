@@ -94,6 +94,12 @@ label + input[type="radio"] {
 Where allowed, avoid specifying units for zero-values
 
 ``` css
+/* bad */
+.selector {
+  margin: 0px;
+}
+
+/* good */
 .selector {
   margin: 0;
 }
@@ -123,9 +129,26 @@ Don't prefix property values or color parameters with a leading zero
 }
 ```
 
-## Vendor Prefixes
+## Vendor prefixes
 
-Use [Autoprefixer](https://twitter.com/autoprefixer) to add vendor prefixes to rules
+Use [Autoprefixer](https://twitter.com/autoprefixer) to add vendor prefixes to rules:
+
+``` css
+.selector {
+  display: flex;
+}
+```
+
+will compile to:
+
+``` css
+.selector {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex
+}
+```
 
 ## ClassName
 
@@ -169,11 +192,27 @@ IE
 
 ## Tips
 
+### Line height
+
+Add no unit `line-height` to `body`:
+
+``` css
+body {
+  line-height: 1.5;
+}
+```
+
 ### No border
 
 Use 0 instead of none to specify that a style has no border:
 
 ``` css
+/* bad */
+.selector {
+  border: none;
+}
+
+/* good */
 .selector {
   border: 0;
 }
