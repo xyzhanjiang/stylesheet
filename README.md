@@ -20,8 +20,11 @@ For my work
 1. Use space
 
 ``` css
+/* Block comment
+   ========================================================================== */
+
 .selector {
-  margin: .5em; /* comment */
+  margin: .5em; /* Inline comment */
 }
 ```
 
@@ -41,6 +44,10 @@ For my work
   .selector-1,
   .selector-2 {
     color: rgba(0, 0, 0, .5);
+  }
+
+  .selector-3 {
+    padding: 10px;
   }
 }
 ```
@@ -66,9 +73,7 @@ label + input[type="radio"] {
 
 ``` css
 .selector {
-  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   color: #666;
   display: inline-block;
   padding: 10px;
@@ -156,7 +161,13 @@ will compile to:
 2. Use meaningful names
 
 ``` css
-.class-name {
+/* bad */
+.mb {
+  /* ^_^ */
+}
+
+/* good */
+.btn-primary {
   /* ^_^ */
 }
 ```
