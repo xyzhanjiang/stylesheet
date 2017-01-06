@@ -283,7 +283,37 @@ Use 0 instead of none to specify that a style has no border:
   }
   ```
 
-3. 元素固定高度 50% 定位+负外边距
+3. 行内块级元素
+
+  ``` css
+  .wrap {
+    height: 200px;
+    white-space: nowrap;
+  }
+
+  .wrap:before {
+    content: " ";
+    display: inline-block;
+    height: 100%;
+    margin-right: -0.25em;
+    vertical-align: middle;
+  }
+
+  .selector {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  ```
+
+  将需要居中的元素包裹起来：
+
+  ``` html
+  <div class="wrap"><div class="selector">center</div></div>
+  ```
+
+  IE 8+ 支持生成内容伪元素
+
+4. 元素固定高度 50% 定位+负外边距
 
   ``` css
   .selector {
@@ -294,7 +324,7 @@ Use 0 instead of none to specify that a style has no border:
   }
   ```
 
-4. 元素固定高度零距离定位+自动边距
+5. 元素固定高度零距离定位+自动边距
 
   ``` css
   .selector {
@@ -306,7 +336,7 @@ Use 0 instead of none to specify that a style has no border:
   }
   ```
 
-5. 元素不定高度 50% 定位+负位移
+6. 元素不定高度 50% 定位+负位移
 
   ``` css
   .selector {
@@ -318,7 +348,7 @@ Use 0 instead of none to specify that a style has no border:
 
   IE 9+ 支持 2D 变形
 
-6. 视口高度一半+负位移
+7. 视口高度一半+负位移
 
   ``` css
   .selector {
@@ -329,7 +359,7 @@ Use 0 instead of none to specify that a style has no border:
 
   IE 9+ 支持 vh 单位
 
-7. Flexbox
+8. Flexbox
 
   ``` css
   .wrap {
@@ -347,6 +377,8 @@ Use 0 instead of none to specify that a style has no border:
   ``` html
   <div class="wrap"><div class="selector">center</div></div>
   ```
+  
+  IE 10+ 支持 flexbox
 
 ### 清除浮动
 
