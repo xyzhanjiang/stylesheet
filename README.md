@@ -33,7 +33,7 @@ For my work
 1. Use 2 spaces for indentation, never mix spaces and tabs
 2. Put a blank line between rule declarations
 3. Put a space before the opening brace `{` in rule declarations
-4. Put closing braces } of rule declarations on a new line
+4. Put closing braces `}` of rule declarations on a new line
 5. Use utf-8
 6. When using multiple selectors in a rule declaration, give each selector its own line, and put the `,` character at the end of line
 
@@ -54,7 +54,7 @@ For my work
 
 ## Selectors
 
-1. Do not use `div` and `span` elements in selectors
+1. Do not use `div` or `span` elements in selectors
 2. Do not use ID selectors
 3. Quote attribute values in selectors
 
@@ -205,7 +205,7 @@ IE
 
 ### Line height
 
-Add no unit `line-height` to `body`:
+Add no unit `line-height` to the `body` element:
 
 ``` css
 body {
@@ -229,22 +229,130 @@ Use 0 instead of none to specify that a style has no border:
 }
 ```
 
-### Block center
+### 水平居中
 
-``` css
-.center-block {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 800px;
-}
-```
+1. 固定宽度块级元素
 
-### Clearfix
+  ``` css
+  .selector {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 800px;
+  }
+  ```
+
+2. 行内元素
+
+  ``` css
+  .selector {
+    text-align: center;
+  }
+  ```
+
+### 垂直居中
+
+1. 真表格布局
+
+  ``` css
+  td {
+    height: 200px;
+    vertical-align: middle;
+  }
+  ```
+
+  表格结构：
+
+  ``` html
+  <table>
+    <tbody>
+      <tr><td><div>center</div></td></tr>
+    </tbody>
+  </table>
+  ```
+
+2. 伪表格布局
+
+  使用 `display: table-cell;` 使元素像表格一样呈现，和表格布局相比省掉了很多无聊的元素：
+
+  ``` css
+  .selector {
+    display: table-cell; /* IE 8+ */
+    height: 200px;
+    vertical-align: middle;
+  }
+  ```
+
+3. 元素固定高度 50% 定位+负外边距
+
+  ``` css
+  .selector {
+    height: 200px;
+    margin-top: -100px; /* 高度的一半 */
+    position: absolute;
+    top: 50%;
+  }
+  ```
+
+4. 元素固定高度零距离定位+自动边距
+
+  ``` css
+  .selector {
+    bottom: 0;
+    height: 200px;
+    margin: auto;
+    position: absolute;
+    top: 0;
+  }
+  ```
+
+5. 元素不定高度 50% 定位+负位移
+
+  ``` css
+  .selector {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  ```
+
+  IE 9+ 支持 2D 变形
+
+6. 视口高度一半+负位移
+
+  ``` css
+  .selector {
+    margin-top: 50vh;
+    transform: translateY(-50%);
+  }
+  ```
+
+  IE 9+ 支持 vh 单位
+
+7. Flexbox
+
+  ``` css
+  .wrap {
+    display: flex;
+    height: 200px;
+  }
+
+  .selector {
+    margin: auto;
+  }
+  ```
+
+  将需要居中的元素包裹起来：
+
+  ``` html
+  <div class="wrap"><div class="selector">center</div></div>
+  ```
+
+### 清除浮动
 
 ``` css
 .clearfix {
-  *zoom: 1;
+  *zoom: 1; /* 如果需要兼容 IE 7- */
 }
 
 .clearfix:before,
@@ -258,21 +366,32 @@ Use 0 instead of none to specify that a style has no border:
 }
 ```
 
-### Text overflow
+使用时包裹浮动元素：
+
+``` html
+<div class="clearfix">
+  <div class="float-left"></div>
+  <div class="float-right"></div>
+</div>
+```
+
+### 单行文本超出显示省略号
 
 ``` css
 .selector {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  width: 200px; /* IE 6 */
+  word-wrap: normal; /* 如果父元素有设置 word-wrap: break-word; 则需要 */
 }
 ```
 
-### Opacity
+### 不透明度
 
 ``` css
 .selector {
-  filter: alpha(opacity=30);
+  filter: alpha(opacity=30); /* IE 8- */
   opacity: .3;
 }
 ```
