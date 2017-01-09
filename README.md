@@ -203,6 +203,58 @@ IE
 
 ## Tips
 
+### 列表分割线
+
+列表与列表之间有一根分割线
+
+结构：
+
+``` html
+<ul>
+  <li>List 1</li>
+  <li>List 2</li>
+  <li>List 3</li>
+</ul>
+```
+
+1. first-child 伪类
+
+  ``` css
+  li {
+    border-top: 1px solid #ccc;
+  }
+
+  li:first-child {
+    border-top: 0;
+  }
+  ```
+
+  IE 7+ 支持
+
+2. last-child 伪类
+
+  ``` css
+  li {
+    border-bottom: 1px solid #ccc;
+  }
+
+  li:last-child {
+    border-bottom: 0;
+  }
+  ```
+
+  IE 9+ 支持
+
+3. adjacent sibling selector
+
+  ``` css
+  li + li {
+    border-top: 1px solid #ccc;
+  }
+  ```
+
+  IE 7+ 支持
+
 ### Line height
 
 Add no unit `line-height` to the `body` element:
