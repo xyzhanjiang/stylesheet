@@ -9,19 +9,22 @@ For my work
 * [Selectors](#selectors)
 * [Declaration](#declaration)
 * [Value](#value)
-* [Units](#units)
 * [Vendor Prefixes](#vendor-prefixes)
 * [ClassName](#classname)
 * [Hacks](#hacks)
-* [Tips](#tips)
 
 ## Comments
 
-1. Use space
-
 ``` css
-/* Block comment
+/* ==========================================================================
+   大块 多行 组件注释
+   大块 多行 组件注释
    ========================================================================== */
+
+/* 小块 单行注释
+   ========================================================================== */
+
+/* 单行注释 */
 
 .selector {
   margin: .5em; /* Inline comment */
@@ -30,73 +33,109 @@ For my work
 
 ## Formatting
 
-1. Use 2 spaces for indentation, never mix spaces and tabs
-2. Put a blank line between rule declarations
-3. Put a space before the opening brace `{` in rule declarations
-4. Put closing braces `}` of rule declarations on a new line
+1. 缩进 2 个空格
+2. 声明块与声明块之间隔一个空行
+3. 在声明块左大括号 `{` 之前留一个空格
+4. 声明块右大括号 `}` 单独一行
 5. Use utf-8
-6. When using multiple selectors in a rule declaration, give each selector its own line, and put the `,` character at the end of line
+6. 使用群组选择器的时候每条选择器单独一行，并且逗号 `,` 放在行末
 
 ``` css
-@charset "utf-8";
+@charset "utf-8"; /* 5 */
 
-@media (min-width: 992px) {
-  .selector-1,
+@media (min-width: 992px) { /* 3 */
+  .selector-1, /* 6 */
   .selector-2 {
     color: rgba(0, 0, 0, .5);
   }
-
+  /* 2 */
   .selector-3 {
     padding: 10px;
   }
-}
+} /* 4 */
 ```
 
 ## Selectors
 
-1. Do not use `div` or `span` elements in selectors
-2. Do not use ID selectors
-3. Quote attribute values in selectors
+1. 不在选择器里面直接使用 `div` 和 `span` 元素
+2. 不建议使用 ID 选择器
+3. 当使用属性选择器的时候添加双引号
 
 ``` css
-label + input[type="radio"] {
+/* bad */
+div,
+a span { /* 1 */
+  display: none;
+}
+
+#id { /* 2 */
+  font-size: 14px;
+}
+
+/* good */
+label + input[type="radio"] { /* 3 */
   /* ^_^ */
+}
+```
+
+当使用后代元素选择器的时候，嵌套层级不宜超过 3 级，保持样式的独立性以及降低选择器权重，同时也出于性能考量
+
+``` css
+/* bad */
+.selector-a .selector-b .selector-c .selector-d {
+  margin: 0;
+}
+
+/* good */
+.selector-d {
+  margin: 0;
 }
 ```
 
 ## Declaration
 
-1. Give each declaration its own line
-2. Put a space after the `:` character
-3. Make sure the declarations are in alphabetical order by the property
-4. Do not omit the semi-colon at the end of the last declaration in a declaration block
+1. 每条声明单独一行
+2. 冒号 `:` 后面留一个空格
+3. 声明块中每一条声明按照首字母顺序排列
+4. 声明块中最后一条声明不要省略分号 `;`
 
 ``` css
 .selector {
-  box-sizing: border-box;
+  box-sizing: border-box; /* 123 */
   color: #666;
   display: inline-block;
-  padding: 10px;
+  padding: 10px; /* 4 */
 }
 ```
 
 ## Value
 
-1. Use double quotes
-2. Use lowercase and shorthand hex color values
+16 进制颜色值使用小写字母以及缩写形式
+
+``` css
+/* bad */
+.selector {
+  color: #FF0000;
+}
+
+/* good */
+.selector {
+  color: #f00;
+}
+```
+
+1. 当需要使用引号的时候使用双引号，即不使用单引号
+2. url 值不需要添加引号
 
 ``` css
 .selector {
-  background-image: url(i/bg.gif);
-  color: #fff;
-  content: "\00a0";
+  background-image: url(i/bg.gif); /* 2 */
+  content: "\00a0"; /* 1 */
   font-family: "Microsoft Yahei", sans-serif;
 }
 ```
 
-### Units
-
-Where allowed, avoid specifying units for zero-values
+值为 0 的时候去掉单位
 
 ``` css
 /* bad */
@@ -110,33 +149,36 @@ Where allowed, avoid specifying units for zero-values
 }
 ```
 
-except time:
-
-``` css
-.selector {
-  transition: all 0s;
-}
-```
-
-or percent:
+时间值和百分比值是例外
 
 ``` css
 .selector {
   color: rgba(100%, 0%, 0%, .5);
+  transition: all 0s;
 }
 ```
 
-Don't prefix property values or color parameters with a leading zero
+省略绝对值小于 1 的值前面的 0
 
 ``` css
+/* bad */
 .selector {
+  left: -0.25em;
+  margin: 0.5em;
+}
+
+/* good */
+.selector {
+  left: -.25em;
   margin: .5em;
 }
 ```
 
 ## Vendor prefixes
 
-Use [Autoprefixer](https://twitter.com/autoprefixer) to add vendor prefixes to rules:
+使用 [Autoprefixer](https://twitter.com/autoprefixer) 自动添加浏览器厂商前缀
+
+直接这样写
 
 ``` css
 .selector {
@@ -144,7 +186,7 @@ Use [Autoprefixer](https://twitter.com/autoprefixer) to add vendor prefixes to r
 }
 ```
 
-will compile to:
+会根据需要兼容的浏览器编译成
 
 ``` css
 .selector {
@@ -157,33 +199,51 @@ will compile to:
 
 ## ClassName
 
-1. Use lowercase and dashes
-2. Use meaningful names
+1. 使用小写字母和数字，不使用大写字母或者下划线以及其它特殊符号
+2. 使用连字符 `-` 分割单词
+3. 使用语义化的命名方式
 
 ``` css
 /* bad */
-.mb {
-  /* ^_^ */
+.MB_5 { /* 12 */
+  margin-bottom: 5px;
 }
 
 /* good */
-.btn-primary {
-  /* ^_^ */
+.margin-bottom-5 { /* 12 */
+  margin-bottom: 5px;
+}
+
+.btn-primary { /* 3 */
+  margin: 0;
 }
 ```
 
-Use `active` class:
+active, disabled, item, left, right, on, off 不单独给这些类指定任何样式，配合使用多类，子元素等其它类型的选择器
 
-``` html
-<ul>
-  <li>Option 1</li>
-  <li class="active">Option 2</li>
-</ul>
+``` css
+/* bad */
+.active {
+  color: blue;
+}
+
+.disabled {
+  background-color: #eee;
+}
+
+/* good */
+.btn.disabled { /* 表示按钮禁用状态 */
+  background-color: #eee;
+}
+
+.list > .item { /* 表示列表的每一条 */
+  margin-bottom: 2px;
+}
 ```
 
 ### JavaScript hooks
 
-Use `js-*` classes to denote behavior (as opposed to style), but keep these classes out of your CSS.
+给 JavaScript 钩子添加 `js-*` 前缀用以区别，这些类名不添加任何样式，只提供给 JavaScript 代码使用
 
 ``` html
 <div class="js-box"></div>
@@ -191,292 +251,13 @@ Use `js-*` classes to denote behavior (as opposed to style), but keep these clas
 
 ## Hacks
 
-IE
+IE 浏览器统一使用 hacks
 
 ``` css
 .selector {
   _color: #666;  /* IE 6 */
   *color: #999;  /* IE 6, 7 */
   color: #333\9; /* IE 6, 7, 8, 9, 10 */
-}
-```
-
-## Tips
-
-### 列表分割线
-
-列表与列表之间有一根分割线
-
-结构：
-
-``` html
-<ul>
-  <li>List 1</li>
-  <li>List 2</li>
-  <li>List 3</li>
-</ul>
-```
-
-1. first-child 伪类
-
-  ``` css
-  li {
-    border-top: 1px solid #ccc;
-  }
-
-  li:first-child {
-    border-top: 0;
-  }
-  ```
-
-  IE 7+ 支持
-
-2. last-child 伪类
-
-  ``` css
-  li {
-    border-bottom: 1px solid #ccc;
-  }
-
-  li:last-child {
-    border-bottom: 0;
-  }
-  ```
-
-  IE 9+ 支持
-
-3. adjacent sibling selector
-
-  ``` css
-  li + li {
-    border-top: 1px solid #ccc;
-  }
-  ```
-
-  IE 7+ 支持
-
-### Line height
-
-Add no unit `line-height` to the `body` element:
-
-``` css
-body {
-  line-height: 1.5;
-}
-```
-
-### No border
-
-Use 0 instead of none to specify that a style has no border:
-
-``` css
-/* bad */
-.selector {
-  border: none;
-}
-
-/* good */
-.selector {
-  border: 0;
-}
-```
-
-### 水平居中
-
-1. 固定宽度块级元素
-
-  ``` css
-  .selector {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 800px;
-  }
-  ```
-
-2. 行内元素
-
-  ``` css
-  .selector {
-    text-align: center;
-  }
-  ```
-
-### 垂直居中
-
-1. 真表格布局
-
-  ``` css
-  td {
-    height: 200px;
-    vertical-align: middle;
-  }
-  ```
-
-  表格结构：
-
-  ``` html
-  <table>
-    <tbody>
-      <tr><td><div>center</div></td></tr>
-    </tbody>
-  </table>
-  ```
-
-2. 伪表格布局
-
-  使用 `display: table-cell;` 使元素像表格一样呈现，和表格布局相比省掉了很多无聊的元素：
-
-  ``` css
-  .selector {
-    display: table-cell; /* IE 8+ */
-    height: 200px;
-    vertical-align: middle;
-  }
-  ```
-
-3. 行内块级元素
-
-  ``` css
-  .wrap {
-    height: 200px;
-    white-space: nowrap;
-  }
-
-  .wrap:before {
-    content: " ";
-    display: inline-block;
-    height: 100%;
-    margin-right: -0.25em;
-    vertical-align: middle;
-  }
-
-  .selector {
-    display: inline-block;
-    vertical-align: middle;
-  }
-  ```
-
-  将需要居中的元素包裹起来：
-
-  ``` html
-  <div class="wrap"><div class="selector">center</div></div>
-  ```
-
-  IE 8+ 支持生成内容伪元素
-
-4. 元素固定高度 50% 定位+负外边距
-
-  ``` css
-  .selector {
-    height: 200px;
-    margin-top: -100px; /* 高度的一半 */
-    position: absolute;
-    top: 50%;
-  }
-  ```
-
-5. 元素固定高度零距离定位+自动边距
-
-  ``` css
-  .selector {
-    bottom: 0;
-    height: 200px;
-    margin: auto;
-    position: absolute;
-    top: 0;
-  }
-  ```
-
-6. 元素不定高度 50% 定位+负位移
-
-  ``` css
-  .selector {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-  ```
-
-  IE 9+ 支持 2D 变形
-
-7. 视口高度一半+负位移
-
-  ``` css
-  .selector {
-    margin-top: 50vh;
-    transform: translateY(-50%);
-  }
-  ```
-
-  IE 9+ 支持 vh 单位
-
-8. Flexbox
-
-  ``` css
-  .wrap {
-    display: flex;
-    height: 200px;
-  }
-
-  .selector {
-    margin: auto;
-  }
-  ```
-
-  将需要居中的元素包裹起来：
-
-  ``` html
-  <div class="wrap"><div class="selector">center</div></div>
-  ```
-  
-  IE 10+ 支持 flexbox
-
-### 清除浮动
-
-``` css
-.clearfix {
-  *zoom: 1; /* 如果需要兼容 IE 7- */
-}
-
-.clearfix:before,
-.clearfix:after {
-  content: " ";
-  display: table;
-}
-
-.clearfix:after {
-  clear: both;
-}
-```
-
-使用时包裹浮动元素：
-
-``` html
-<div class="clearfix">
-  <div class="float-left"></div>
-  <div class="float-right"></div>
-</div>
-```
-
-### 单行文本超出显示省略号
-
-``` css
-.selector {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  width: 200px; /* IE 6 */
-  word-wrap: normal; /* 如果父元素有设置 word-wrap: break-word; 则需要 */
-}
-```
-
-### 不透明度
-
-``` css
-.selector {
-  filter: alpha(opacity=30); /* IE 8- */
-  opacity: .3;
 }
 ```
 
