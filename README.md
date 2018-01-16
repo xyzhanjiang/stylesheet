@@ -92,6 +92,23 @@ label + input[type="radio"] { /* 3 */
 }
 ```
 
+链接伪类选择器应同时指定 hover 和 focus 样式
+
+``` css
+a:hover,
+a:focus {
+  color: red;
+}
+```
+
+对列表元素使用子元素选择器以免样式影响更深层级的后代
+
+``` css
+.list > li {
+  margin-bottom: 2px;
+}
+```
+
 ## Declaration
 
 1. 每条声明单独一行
